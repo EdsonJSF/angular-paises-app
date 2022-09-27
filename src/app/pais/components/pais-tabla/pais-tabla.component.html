@@ -14,7 +14,11 @@
       <tr *ngFor="let pais of paises; let i = index">
         <td>{{ i + 1 }}</td>
         <td>
-          <img [src]="pais.flags.svg" class="small-flag" />
+          <img
+            [src]="pais.flags.svg"
+            alt="Bandera de {{ pais.name.common }}"
+            class="small-flag"
+          />
         </td>
         <td>{{ pais.name.common }}</td>
         <td>{{ pais.capital }}</td>
