@@ -1,7 +1,7 @@
 export interface Country {
   altSpellings: string[];
   area: number;
-  borders?: string[];
+  borders: string[];
   capital: string[];
   capitalInfo: CapitalInfo;
   car: Car;
@@ -11,12 +11,12 @@ export interface Country {
   cioc: string;
   coatOfArms: CoatOfArms;
   continents: string[];
-  currencies: { [key: string]: Currency };
+  currencies: Currencies;
   demonyms: Demonyms;
   fifa: string;
   flag: string;
   flags: CoatOfArms;
-  gini?: { [key: string]: number };
+  gini: Gini;
   idd: Idd;
   independent: boolean;
   landlocked: boolean;
@@ -25,15 +25,42 @@ export interface Country {
   maps: Maps;
   name: Name;
   population: number;
-  postalCode?: PostalCode;
+  postalCode: PostalCode;
   region: string;
   startOfWeek: string;
   status: string;
   subregion: string;
   timezones: string[];
   tld: string[];
-  translations: { [key: string]: Translation };
+  translations: Translations;
   unMember: boolean;
+}
+
+export interface Translations {
+  ara: Name;
+  bre: Name;
+  ces: Name;
+  cym: Name;
+  deu: Name;
+  est: Name;
+  fin: Name;
+  fra: Name;
+  hrv: Name;
+  hun: Name;
+  ita: Name;
+  jpn: Name;
+  kor: Name;
+  nld: Name;
+  per: Name;
+  pol: Name;
+  por: Name;
+  rus: Name;
+  slk: Name;
+  spa: Name;
+  swe: Name;
+  tur: Name;
+  urd: Name;
+  zho: Name;
 }
 
 export interface CapitalInfo {
@@ -50,7 +77,11 @@ export interface CoatOfArms {
   svg: string;
 }
 
-export interface Currency {
+export interface Currencies {
+  PEN: Pen;
+}
+
+export interface Pen {
   name: string;
   symbol: string;
 }
@@ -65,16 +96,19 @@ export interface Eng {
   m: string;
 }
 
+export interface Gini {
+  '2019': number;
+}
+
 export interface Idd {
   root: string;
   suffixes: string[];
 }
 
 export interface Languages {
-  eng?: string;
-  jpn?: string;
-  spa?: string;
-  zho?: string;
+  aym: string;
+  que: string;
+  spa: string;
 }
 
 export interface Maps {
@@ -84,15 +118,14 @@ export interface Maps {
 
 export interface Name {
   common: string;
-  nativeName: NativeName;
+  nativeName?: NativeName;
   official: string;
 }
 
 export interface NativeName {
-  eng?: Translation;
-  jpn?: Translation;
-  spa?: Translation;
-  zho?: Translation;
+  aym: Translation;
+  que: Translation;
+  spa: Translation;
 }
 
 export interface Translation {
