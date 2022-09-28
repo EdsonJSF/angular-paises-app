@@ -5,6 +5,7 @@ export interface Country {
   capital: string[];
   capitalInfo: CapitalInfo;
   car: Car;
+  alpha2Code: string;
   cca2: string;
   cca3: string;
   ccn3: string;
