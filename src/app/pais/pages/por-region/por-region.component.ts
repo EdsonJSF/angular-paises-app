@@ -9,28 +9,44 @@ import { Country } from '../../interfaces/pais.interface';
   styles: [],
 })
 export class PorRegionComponent {
-  termino: string = '';
-  hayError: boolean = false;
+  regiones: string[] = [
+    'EU',
+    'EFTA',
+    'CARICOM',
+    'PA',
+    'AU',
+    'USAN',
+    'EEU',
+    'AL',
+    'ASEAN',
+    'CAIS',
+    'CEFTA',
+    'NAFTA',
+    'SAARC',
+  ];
+  regionActiva: string = '';
   paises: Country[] = [];
 
   constructor(private paisService: PaisService) {}
 
-  buscar(termino: string) {
-    this.hayError = false;
-    this.termino = termino;
-    this.paisService.buscarRegion(this.termino).subscribe(
+  getClaseCSS(region: string) {
+    return region === this.regionActiva ? 'btn-primary' : 'btn-outline-primary';
+  }
+
+  activarRegion(region: string) {
+    if (region === this.regionActiva) return;
+    this.regionActiva = region;
+    this.buscar(region);
+  }
+
+  buscar(region: string) {
+    this.paisService.buscarRegion(region).subscribe(
       (paises) => {
         this.paises = paises;
       },
       (error) => {
-        this.hayError = true;
         this.paises = [];
       }
     );
-  }
-
-  sugerencias(termino: string) {
-    this.hayError = false;
-    console.log(termino);
   }
 }

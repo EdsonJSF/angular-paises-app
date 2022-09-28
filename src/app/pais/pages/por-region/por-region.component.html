@@ -1,21 +1,30 @@
-<h2>Por Región</h2>
+<h2>
+  Por Región
+  <small class="text-capitalize text-muted">
+    {{ regionActiva ? "( " + regionActiva + " )" : "" }}
+  </small>
+</h2>
 <hr />
 
 <div class="row">
   <div class="col">
-    <app-pais-input
-      (onEnter)="buscar($event)"
-      (onDebounce)="sugerencias($event)"
-      placeholder="Buscar región.."
-    ></app-pais-input>
+    <!-- [class.btn-primary]="region === regionActiva" -->
+    <!-- [ngClass]="{
+      'btn-primary': region === regionActiva,
+      'btn-outline-primary': region !== regionActiva
+    }" -->
+    <button
+      class="btn m-1 text-capitalize"
+      [class]="getClaseCSS(region)"
+      *ngFor="let region of regiones"
+      (click)="activarRegion(region)"
+    >
+      {{ region }}
+    </button>
   </div>
 </div>
 
 <hr />
-
-<div *ngIf="hayError" class="alert alert-danger">
-  No se encontró nada con el tértmino {{ termino }}
-</div>
 
 <div *ngIf="paises.length" class="row">
   <div class="col">
