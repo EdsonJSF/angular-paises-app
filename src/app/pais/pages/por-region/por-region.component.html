@@ -1,33 +1,35 @@
-<h2>
-  Por Región
-  <small class="text-capitalize text-muted">
-    {{ regionActiva ? "( " + regionActiva + " )" : "" }}
-  </small>
-</h2>
-<hr />
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h2>
+    Por Región
+    <small class="text-capitalize text-muted">
+      {{ regionActiva ? "( " + regionActiva + " )" : "" }}
+    </small>
+  </h2>
+  <hr />
 
-<div class="row">
-  <div class="col">
-    <!-- [class.btn-primary]="region === regionActiva" -->
-    <!-- [ngClass]="{
-      'btn-primary': region === regionActiva,
-      'btn-outline-primary': region !== regionActiva
-    }" -->
-    <button
-      class="btn m-1 text-capitalize"
-      [class]="getClaseCSS(region)"
-      *ngFor="let region of regiones"
-      (click)="activarRegion(region)"
-    >
-      {{ region }}
-    </button>
+  <div class="row">
+    <div class="col">
+      <!-- [class.btn-primary]="region === regionActiva" -->
+      <!-- [ngClass]="{
+        'btn-primary': region === regionActiva,
+        'btn-outline-primary': region !== regionActiva
+      }" -->
+      <button
+        class="btn m-1 text-capitalize animate__animated animate__pulse animate__faster"
+        [class]="getClaseCSS(region)"
+        *ngFor="let region of regiones"
+        (click)="activarRegion(region)"
+      >
+        {{ region }}
+      </button>
+    </div>
   </div>
-</div>
 
-<hr />
+  <hr />
 
-<div *ngIf="paises.length" class="row">
-  <div class="col">
-    <app-pais-tabla [paises]="paises"></app-pais-tabla>
+  <div *ngIf="paises.length" class="row">
+    <div class="col">
+      <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
   </div>
 </div>
