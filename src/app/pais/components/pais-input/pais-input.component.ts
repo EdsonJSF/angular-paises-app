@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { Country } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-pais-input',
@@ -9,6 +10,8 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class PaisInputComponent implements OnInit {
   @Input() placeholder: string = 'Buscar';
+  @Input() paisesSugeridos: Country[] = [];
+  @Input() pais: boolean = true;
 
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();

@@ -1,6 +1,6 @@
 <form autocomplete="off" (ngSubmit)="buscar()" class="animate__animated animate__pulse animate__faster">
   <input
-    class="form'control"
+    class="form-control"
     type="text"
     name="termino"
     [(ngModel)]="termino"
@@ -8,3 +8,22 @@
     [placeholder]="placeholder"
   />
 </form>
+
+<ul class="list-group">
+  <li
+    *ngFor="let paisSugerido of paisesSugeridos"
+    class="list-group-item list-group-item-action d-flex justify-content-between p-0"
+  >
+    <a [routerLink]="['/pais', paisSugerido.cca2 ]" class="nav-link w-100 px-4 py-3">
+      <ng-container *ngIf="pais; else capital">{{ paisSugerido.name.common }}</ng-container>
+      <ng-template #capital>{{ paisSugerido.capital }}</ng-template>
+    </a>
+  </li>
+  <li
+    *ngIf="termino"
+    (click)="buscar()"
+    class="list-group-item list-group-item-action d-flex justify-content-between btn"
+  >
+    <p class="m-0 nav-link"> Buscar: "{{ termino }}"</p>
+  </li>
+</ul>

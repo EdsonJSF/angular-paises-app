@@ -8,6 +8,8 @@
         (onEnter)="buscar($event)"
         (onDebounce)="sugerencias($event)"
         placeholder="Buscar capital.."
+        [paisesSugeridos]="paisesSugeridos"
+        [pais]="false"
       ></app-pais-input>
     </div>
   </div>
